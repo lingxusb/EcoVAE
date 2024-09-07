@@ -1,4 +1,4 @@
-# VAE Training Project
+# Plant distribution modeling project
 
 This project implements a Variational Autoencoder (VAE) for training on masked data and applying the trained model to new data.
 
