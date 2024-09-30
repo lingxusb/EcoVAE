@@ -1,6 +1,6 @@
-# Plant distribution modeling project
+# EcoVAE: a deep learning approach for predicting species distributions
 
-This project implements a Variational Autoencoder (VAE) for training on masked data and applying the trained model to new data.
+Here we introduce EcoVAE, a deep learning model to predict and interpolate global species distributions using incomplete input data. Trained on 33.8 million specimen occurrence records, EcoVAE demonstrates high precision in predicting full species distributions in regions withheld from the training data. It effectively interpolates species presence in areas with both abundant and sparse samples, while also uncovering intrinsic species interactions that may not be directly observable in original records.
 
 ## Setup
 
