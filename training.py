@@ -53,12 +53,12 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VAE Training")
     parser.add_argument("-e", "--num_epochs", type=int, default=15, help="Number of epochs")
-    parser.add_argument("--hidden_dim", type=int, default=256, help="Hidden dimension")
-    parser.add_argument("--latent_dim", type=int, default=32, help="Latent dimension")
-    parser.add_argument("--learning_rate", type=float, default=1e-3, help="Learning rate")
-    parser.add_argument("--batch_size", type=int, default=512, help="Batch size")
-    parser.add_argument("--masking_ratio", type=float, default=0.5, help="Masking ratio")
-    parser.add_argument("--lambda_weight", type=float, default=0.5, help="Lambda weight")
+    parser.add_argument("-hd","--hidden_dim", type=int, default=256, help="Hidden dimension")
+    parser.add_argument("-ld","--latent_dim", type=int, default=32, help="Latent dimension")
+    parser.add_argument("-l","--learning_rate", type=float, default=1e-3, help="Learning rate")
+    parser.add_argument("-b","--batch_size", type=int, default=512, help="Batch size")
+    parser.add_argument("-m","--masking_ratio", type=float, default=0.5, help="Masking ratio")
+    parser.add_argument("-lw","--lambda_weight", type=float, default=0.5, help="Lambda weight")
     
     args = parser.parse_args()
     main(args)
