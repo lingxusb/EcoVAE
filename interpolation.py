@@ -42,9 +42,9 @@ def main(model_name, input_file, output_file, input_dim, hidden_dim, latent_dim,
     results = apply_model(model, input_data, batch_size=batch_size, device=device)
 
     # Save results
-    save_results(results, output_file)
+    save_results(results, f'./data/{output_file}')
 
-    print(f"Results saved to {output_file}")
+    print(f"Results saved to ./data/{output_file}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Apply VAE model to input data")
