@@ -2,7 +2,7 @@
 
 Here we introduce EcoVAE, a deep learning model to predict and interpolate global species distributions using incomplete input data. Trained on 33.8 million specimen occurrence records, EcoVAE demonstrates high precision in predicting full species distributions in regions withheld from the training data. It effectively interpolates species presence in areas with both abundant and sparse samples, while also uncovering intrinsic species interactions that may not be directly observable in original records.
 
-### Installation
+## Installation
 Python package dependencies:
 - torch 2.0.0
 - pandas 1.3.4
@@ -23,7 +23,7 @@ We recommend using [Conda](https://docs.conda.io/en/latest/index.html) to instal
    conda activate mvae
    ```
 
-### Model training
+## Model training
 
 The following codes could be used to train the EcoVAE model to predict the species distribution from partial observations. The corresponding training and test datasets are provided in the ```./data``` folder.
 
@@ -64,7 +64,7 @@ Model output is the model file stored in ```./model/model.pth```.
 
 The script should automatically detect whether to use CUDA (GPU) or CPU based on availability. If you encounter a CUDA-related error when running on a CPU-only machine, the script will handle this by falling back to CPU.
 
-### Data interpolation
+## Data interpolation
 
 After training, you can apply the model to new data using the `interpolation.py` script. This script loads a trained model and applies it to new data from a text file. Please note that the new data should have the same number of species/genera as the training data.
 
@@ -104,7 +104,7 @@ Optional arguments
 
 Model output are predicted scores for species occurrence which has the same size with the model input.
 
-### Project Structure
+## Project Structure
 
 - `env.yml`: Conda environment file
 - `training.py`: Main training script
@@ -114,4 +114,4 @@ Model output are predicted scores for species occurrence which has the same size
 - `interpolation.py`: Script to apply trained model to new data
 - `README.md`: Readme file
 
-### Reference
+## Reference
