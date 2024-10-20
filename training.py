@@ -5,6 +5,7 @@ from torch.utils.data import DataLoader, TensorDataset
 from model import VAE, loss_function
 from data_loader import load_data
 from utils import evaluate_model
+import os
 
 def train(model, train_loader, x_eval, optimizer, device, lambda_weight, masking_ratio, num_epochs):
     for epoch in range(num_epochs):
@@ -26,8 +27,8 @@ def train(model, train_loader, x_eval, optimizer, device, lambda_weight, masking
         # Evaluate the model
         eval_loss = evaluate_model(model, x_eval, device)
         print(f"Eval set MSE loss: {eval_loss:.4f}")
-        PATH = './model/model.pth'
-        torch.save(model.state_dict(), PATH)
+    PATH = './model/model.pth'
+    torch.save(model.state_dict(), PATH)
 
 
 def main(args):
@@ -53,12 +54,12 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="VAE Training")
     parser.add_argument("-e", "--num_epochs", type=int, default=15, help="Number of epochs")
-    parser.add_argument("--hidden_dim", type=int, default=256, help="Hidden dimension")
-    parser.add_argument("--latent_dim", type=int, default=32, help="Latent dimension")
-    parser.add_argument("--learning_rate", type=float, default=1e-3, help="Learning rate")
-    parser.add_argument("--batch_size", type=int, default=512, help="Batch size")
-    parser.add_argument("--masking_ratio", type=float, default=0.5, help="Masking ratio")
-    parser.add_argument("--lambda_weight", type=float, default=0.5, help="Lambda weight")
+    parser.add_argument("-hd","--hidden_dim", type=int, default=256, help="Hidden dimension")
+    parser.add_argument("-ld","--latent_dim", type=int, default=32, help="Latent dimension")
+    parser.add_argument("-l","--learning_rate", type=float, default=1e-3, help="Learning rate")
+    parser.add_argument("-b","--batch_size", type=int, default=512, help="Batch size")
+    parser.add_argument("-m","--masking_ratio", type=float, default=0.5, help="Masking ratio")
+    parser.add_argument("-lw","--lambda_weight", type=float, default=0.5, help="Lambda weight")
     
     args = parser.parse_args()
     main(args)
