@@ -137,6 +137,7 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 - `data_loader.py`: Data loading utilities
 - `utils.py`: Utility functions
 - `interpolation.py`: Script to apply trained model to new data
+- `interaction.py`: Script to apply trained model to study species interaction
 - `README.md`: Readme file
 
 ## Reference
