@@ -61,7 +61,7 @@ Optional arguments
 | ```-m```, ```--masking_ratio``` | the ratio of the input data that are randomly masked in the model training process, default value: 0.5 |
 | ```-lw```, ```--lambda_weight``` | the weight to balance the reconstruction loss for the masked and unmasked data, default = 0.5  |
 
-Model output is the model file stored in ```./model/model.pth```.
+Output is the model file stored in ```./model/model.pth```.
 
 The script should automatically detect whether to use CUDA (GPU) or CPU based on availability. If you encounter a CUDA-related error when running on a CPU-only machine, the script will handle this by falling back to CPU.
 
