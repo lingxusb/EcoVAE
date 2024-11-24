@@ -1,7 +1,7 @@
 # EcoVAE: a deep learning approach for predicting species distributions
 ![image](https://github.com/user-attachments/assets/4522bd81-18f2-4bf2-8658-d1fbf5ee5a3f)
 
-Here we introduce EcoVAE, a deep learning model to predict and interpolate global species distributions using incomplete input data. Trained on 33.8 million specimen occurrence records, EcoVAE demonstrates high precision in predicting full species distributions in regions withheld from the training data. It effectively interpolates species presence in areas with both abundant and sparse samples, while also uncovering intrinsic species interactions that may not be directly observable in original records.
+Anthropogenic pressures on biodiversity necessitate efficient and highly scalable methods to predict global species distributions. Here, we introduce EcoVAE, an autoencoder-based model trained on nearly 34 million georeferenced occurrences from 13,125 plant genera to predict global plant distributions without relying on environmental variables. EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions, offering new applications for biodiversity exploration and monitoring.
 
 ## Installation
 Python package dependencies:
@@ -29,8 +29,8 @@ We recommend using [Conda](https://docs.conda.io/en/latest/index.html) to instal
 
 The following codes could be used to train the EcoVAE model to predict the species distribution from partial observations. The corresponding training and test datasets are provided in the ```./data``` folder.
 
-- ```train.txt```, which stores the training data for species distributions. The provided example file contains 1000 grid samples with 100 species. The value 0 indicates absence of the species and value 1 denotes existence of the species in the grid.
-- ```test.txt```, which stores the observation data for the test dataset. The provided file contains 200 sample grids.
+- ```train.txt```, which stores the training data for species distributions. The provided example file contains grid samples with 100 species. The value 0 indicates absence of the species and value 1 denotes existence of the species in the grid.
+- ```test.txt```, which stores the observation data for the test dataset with 100 species.
 
 
 To train the model, please run the following codes:
@@ -129,16 +129,5 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 - ```interaction_background.txt```, size is (n, 13,125), row *i* stores the grid number (distribution range) for all the genera.
 - ```interaction_addition.txt```, size is (n, 13,125), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
 
-
-## Project Structure
-
-- `env.yml`: Conda environment file
-- `training.py`: Main training script
-- `model.py`: VAE model definition
-- `data_loader.py`: Data loading utilities
-- `utils.py`: Utility functions
-- `interpolation.py`: Script to apply trained model to new data
-- `interaction.py`: Script to apply trained model to study species interaction
-- `README.md`: Readme file
 
 ## Reference
