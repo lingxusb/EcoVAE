@@ -88,7 +88,7 @@ python interpolation.py --model custom_model.pth --input custom_input.txt
 For a full list of options, please run:
 
 ```
-python training.py --help
+python interpolation.py --help
 ```
 
 Optional arguments
