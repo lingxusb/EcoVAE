@@ -1,4 +1,4 @@
-# EcoVAE: a deep learning approach for predicting species distributions
+# EcoVAE: a generative deep learning approach for predicting species distributions
 ![github](https://github.com/user-attachments/assets/3432b7d5-ddcd-4a62-9639-be4674e05007)
 
 
