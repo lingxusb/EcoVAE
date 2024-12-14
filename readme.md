@@ -4,6 +4,7 @@
 
 Anthropogenic pressures on biodiversity necessitate efficient and highly scalable methods to predict global species distributions. Current species distribution models (SDMs) face limitations with large-scale datasets, complex interspecies interactions, and data quality. Here, we introduce EcoVAE, a framework of autoencoder-based generative models trained separately on nearly 124 million georeferenced occurrences from taxa including plants, butterflies and mammals, to predict their global distributions at both genus and species levels. EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions without relying on environmental variables, offering new applications for biodiversity exploration and monitoring. 
 
+
 ## Installation
 Python package dependencies:
 - torch 2.0.0
@@ -130,5 +131,12 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 - ```interaction_background.txt```, size is (n, 13,125), row *i* stores the grid number (distribution range) for all the genera.
 - ```interaction_addition.txt```, size is (n, 13,125), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
 
+## Model details
+| Taxa      | plant | plant |butterfly |butterfly |mammal |mammal  |
+|-----------|-------|---------|-------|---------|-------|---------|
+|  level         | genus |  species  | genus |  species      | genus |  species      |
+| species/genus number | 13k | 127k | 11k | 47k | 1k | 5k |
+| occurrence records   | 34M | 34M  | 68M  | 66M  | 22M | 21M |
+| model parameter | 7M | 65M | 6M | 24M | 1M | 3M |
 
 ## Reference
