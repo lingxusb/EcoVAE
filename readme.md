@@ -2,7 +2,9 @@
 ![github](https://github.com/user-attachments/assets/3432b7d5-ddcd-4a62-9639-be4674e05007)
 
 
-Anthropogenic pressures on biodiversity necessitate efficient and highly scalable methods to predict global species distributions. Current species distribution models (SDMs) face limitations with large-scale datasets, complex interspecies interactions, and data quality. Here, we introduce EcoVAE, a framework of autoencoder-based generative models trained separately on nearly 124 million georeferenced occurrences from taxa including plants, butterflies and mammals, to predict their global distributions at both genus and species levels. EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions without relying on environmental variables, offering new applications for biodiversity exploration and monitoring. 
+- Anthropogenic pressures on biodiversity necessitate efficient and highly scalable methods to predict global species distributions. Current species distribution models (SDMs) face limitations with large-scale datasets, complex interspecies interactions, and data quality.
+- We introduce **EcoVAE**, a framework of autoencoder-based generative models trained separately on nearly **124 million** georeferenced occurrences from taxa including plants, butterflies and mammals, to predict their global distributions at both genus and species levels.
+- EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions without relying on environmental variables, offering new applications for biodiversity exploration and monitoring. 
 
 
 ## Installation
