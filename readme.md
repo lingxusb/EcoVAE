@@ -142,3 +142,4 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 | model parameter | 7M | 65M | 6M | 24M | 1M | 3M |
 
 ## Reference
+- [A generative deep learning approach for global species distribution prediction](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1)
