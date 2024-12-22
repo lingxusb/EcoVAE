@@ -74,7 +74,7 @@ The script should automatically detect whether to use CUDA (GPU) or CPU based on
 
 After training, you can apply the model to new data using the `interpolation.py` script. This script loads a trained model and applies it to new data. Please note that the new data should have the same number of species/genera as the training data.
 
-- the trained model is provided in the ```./model/model_all_regions.pth```. The input and output dimension of the model is 13,125.
+- the trained model is provided in the ```./model/model_all_regions.pth```. The input and output dimension of the model is 13,125 (plant distribution model at the genus level).
 - the example dataset to interpolate is stored in ```./data/interpolation_input.npy```, which contains the observation data from 561 grids and with a shape of (561, 13125).
 
 
@@ -112,9 +112,9 @@ Model output are predicted scores for species occurrence which has the same size
 ## Species interactions
 After training, you can apply the model to study the species interactions using the `interaction.py` script. This script loads a trained model and applies it to new data. Please note that the new data should have the same number of species/genera as the training data.
 
-- the trained model is provided in ```./model/model_all_regions.pth```. The input and output dimension of the model is 13,125.
-- the example dataset for studying the species interactions is stored in ```./data/interpolation_input.npy```, which contains teh observation data from 561 grids and with a shape of (561, 13125).
-- the genus list is provided in ```./data/interaction/genus_list.npy```, which stores the names for 13,125 genera.
+- the trained model is provided in ```./model/model_all_regions.pth```. The input and output dimension of the model is 13,125 (plant distribution model at the genus level).
+- the example dataset for studying the species interactions is stored in ```./data/interpolation_input.npy```, which contains the observation data from 561 grids and with a shape of (561, 13125).
+- the genus list is provided in ```./data/interaction/genus_list.npy```, which stores the names for 13,125 plant genera.
 
 To run the script with default settings:
 
