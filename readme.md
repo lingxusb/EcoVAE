@@ -109,6 +109,9 @@ Optional arguments
 | ```-b```, ```--batch_size``` | batch size for model inference, default value: 2048  |
 
 Model output are predicted scores for species occurrence which has the same size with the model input.
+
+We also provided a [jupyter notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/interpolation.ipynb) for data interpolation.
+
 ## Species interactions
 After training, you can apply the model to study the species interactions using the `interaction.py` script. This script loads a trained model and applies it to new data. Please note that the new data should have the same number of species/genera as the training data.
 
