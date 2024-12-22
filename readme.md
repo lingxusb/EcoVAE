@@ -19,14 +19,14 @@ We recommend using [Conda](https://docs.conda.io/en/latest/index.html) to instal
 
 1. Clone this repository:
    ```
-   git clone https://github.com/lingxusb/mvae.git
-   cd mvae
+   git clone https://github.com/lingxusb/EcoVAE.git
+   cd EcoVAE
    ```
 
 2. Create and activate the Conda environment:
    ```
    conda env create -f env.yml
-   conda activate mvae
+   conda activate ecovae
    ```
 
 ## Model training
