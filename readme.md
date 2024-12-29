@@ -144,5 +144,7 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 | occurrence records   | 34M | 34M  | 68M  | 66M  | 22M | 21M |
 | model parameter | 7M | 65M | 6M | 24M | 1M | 3M |
 
+Our training data are publicly available from GBIF (https://www.gbif.org/). Please check our [preprint](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1) for more details.
+
 ## Reference
 - [A generative deep learning approach for global species distribution prediction](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1)
