@@ -29,9 +29,15 @@ We recommend using [Conda](https://docs.conda.io/en/latest/index.html) to instal
    conda activate ecovae
    ```
 
+## Tutorial
+We provide a [tutorial notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/tutorial.ipynb) that walks through the entire process, including data processing from raw GBIF output, model training, prediction error calculation, and plotting of prediction error. The example dataset that contains 259k occurrence records can be downloaded from GBIF (https://www.gbif.org/occurrence/download/0000223-250117142028555).
+
+Below we provide details for each function.
+
+
 ## Model training
 
-The following codes could be used to train the EcoVAE model to predict the species distribution from partial observations. The corresponding training and test datasets are provided in the ```./data``` folder.
+The following codes could be used to train the EcoVAE model to predict the species distribution from partial observations. The example training and test datasets are provided in the ```./data``` folder.
 
 - ```train.txt```, which stores the training data for species distributions. The provided example file contains grid samples with 100 species. The value 0 indicates absence of the species and value 1 denotes existence of the species in the grid.
 - ```test.txt```, which stores the observation data for the test dataset with 100 species.
@@ -147,10 +153,6 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 | model parameter | 7M | 65M | 6M | 24M | 1M | 3M |
 
 Our models are available from [HuggingFace](https://huggingface.co/lingxusb/EcoVAE/tree/main). Our training data are publicly available from GBIF (https://www.gbif.org/). Please check our [preprint](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1) for more details.
-
-
-## Tutorial
-We provide a [tutorial notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/tutorial.ipynb) that walks through the entire process, including data processing from raw GBIF output, model training, prediction error calculation, and plotting of prediction error. The example dataset that contains 259k occurrence records can be downloaded from GBIF (https://www.gbif.org/occurrence/download/0000223-250117142028555).
 
 ## Reference
 - [A generative deep learning approach for global species distribution prediction](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1)
