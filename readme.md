@@ -4,7 +4,7 @@
 
 - Anthropogenic pressures on biodiversity necessitate efficient and highly scalable methods to predict global species distributions. Current species distribution models (SDMs) face limitations with large-scale datasets, complex interspecies interactions, and data quality.
 - We introduce **EcoVAE**, a framework of autoencoder-based generative models trained separately on nearly **124 million** georeferenced occurrences from taxa including plants, butterflies and mammals, to predict their global distributions at both genus and species levels.
-- EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions without relying on environmental variables, offering new applications for biodiversity exploration and monitoring. 
+- EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions without relying on environmental variables, offering new applications for biodiversity exploration and monitoring.
 
 
 ## Installation
@@ -65,6 +65,8 @@ Optional arguments
 | ```-b```, ```--batch_size``` | batch size for model training, default value: 512  |
 | ```-m```, ```--masking_ratio``` | the ratio of the input data that are randomly masked in the model training process, default value: 0.5 |
 | ```-lw```, ```--lambda_weight``` | the weight to balance the reconstruction loss for the masked and unmasked data, default = 0.5  |
+| ```-i```, ```--input``` | input file name, read the toy dataset if not given  |
+| ```-o```, ```--output``` |  output file name, default value: ./model/model.pth  |
 
 Output is the model file stored in ```./model/model.pth```.
 
@@ -145,6 +147,9 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 | model parameter | 7M | 65M | 6M | 24M | 1M | 3M |
 
 Our training data are publicly available from GBIF (https://www.gbif.org/). Please check our [preprint](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1) for more details.
+
+## Tutorial
+We provide a [tutorial notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/tutorial.ipynb) that walks through the entire process, including data processing from raw GBIF output, model training, prediction error calculation, and plotting of prediction error. The example dataset that contains 259k occurrence records can be downloaded from GBIF (https://www.gbif.org/occurrence/download/0000223-250117142028555).
 
 ## Reference
 - [A generative deep learning approach for global species distribution prediction](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1)
