@@ -146,7 +146,8 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 | occurrence records   | 34M | 34M  | 68M  | 66M  | 22M | 21M |
 | model parameter | 7M | 65M | 6M | 24M | 1M | 3M |
 
-Our training data are publicly available from GBIF (https://www.gbif.org/). Please check our [preprint](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1) for more details.
+Our models are available from [HuggingFace](https://huggingface.co/lingxusb/EcoVAE/tree/main). Our training data are publicly available from GBIF (https://www.gbif.org/). Please check our [preprint](https://www.biorxiv.org/content/10.1101/2024.12.10.627845v1) for more details.
+
 
 ## Tutorial
 We provide a [tutorial notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/tutorial.ipynb) that walks through the entire process, including data processing from raw GBIF output, model training, prediction error calculation, and plotting of prediction error. The example dataset that contains 259k occurrence records can be downloaded from GBIF (https://www.gbif.org/occurrence/download/0000223-250117142028555).
