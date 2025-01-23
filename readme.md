@@ -141,8 +141,10 @@ python interaction.py --help
 
 The optional argument is similar to the ```interpolation.py``` file. The model output contains three files in the ```./data/interaction``` folder:
 - ```interaction_genus.txt```, stores the names for all the genera that have been added in the grids,  length is *n*.
-- ```interaction_background.txt```, size is (n, 13,125), row *i* stores the grid number (distribution range) for all the genera.
-- ```interaction_addition.txt```, size is (n, 13,125), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
+- ```interaction_background.txt```, size is (n, n), row *i* stores the grid number (distribution range) for all the genera.
+- ```interaction_addition.txt```, size is (n, n), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
+
+We also provide a [jupyter notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/interaction.ipynb) for analyzing the model output.
 
 ## Model details
 | Taxa      | plant | plant |butterfly |butterfly |mammal |mammal  |
