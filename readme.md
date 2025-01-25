@@ -5,7 +5,15 @@
 - Anthropogenic pressures on biodiversity necessitate efficient and highly scalable methods to predict global species distributions. Current species distribution models (SDMs) face limitations with large-scale datasets, complex interspecies interactions, and data quality.
 - We introduce **EcoVAE**, a framework of autoencoder-based generative models trained separately on nearly **124 million** georeferenced occurrences from taxa including plants, butterflies and mammals, to predict their global distributions at both genus and species levels.
 - EcoVAE achieves high precision and speed, captures underlying distribution patterns through unsupervised learning, and reveals interspecies interactions via in silico perturbation analyses. Additionally, it evaluates global sampling efforts and interpolates distributions without relying on environmental variables, offering new applications for biodiversity exploration and monitoring.
+- 
+## Table of Contents
 
+- [Installation](#Installation)
+- [Tutorial](#Tutorial)
+- [Model training](#Model-training)
+- [Data interpolation](#Data-interpolation)
+- [Species interactions](#Species-interactions)
+- [Model details](#Model-details)
 
 ## Installation
 Python package dependencies:
@@ -141,8 +149,10 @@ python interaction.py --help
 
 The optional argument is similar to the ```interpolation.py``` file. The model output contains three files in the ```./data/interaction``` folder:
 - ```interaction_genus.txt```, stores the names for all the genera that have been added in the grids,  length is *n*.
-- ```interaction_background.txt```, size is (n, 13,125), row *i* stores the grid number (distribution range) for all the genera.
-- ```interaction_addition.txt```, size is (n, 13,125), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
+- ```interaction_background.txt```, size is (n, n), row *i* stores the grid number (distribution range) for all the genera.
+- ```interaction_addition.txt```, size is (n, n), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
+
+We also provide a [jupyter notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/interaction.ipynb) for analyzing the model output.
 
 ## Model details
 | Taxa      | plant | plant |butterfly |butterfly |mammal |mammal  |
