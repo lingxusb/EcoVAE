@@ -1,11 +1,12 @@
 import torch
+import torch.nn as nn
 import numpy as np
 import argparse
 from model import VAE
 from tqdm import tqdm
 
-# Function to apply the model in batches and return the reconstructed data
 def apply_model(model, data, batch_size=2048, device='cuda'):
+    """Apply the trained model to new data in batches."""
     model.eval()
     num_samples = data.size(0)
     recon_x_list = []
@@ -18,26 +19,56 @@ def apply_model(model, data, batch_size=2048, device='cuda'):
 
     return torch.cat(recon_x_list, dim=0)
 
-# Function to save results to a specified file
 def save_results(results, file_path):
+    """Save results to a specified file."""
     np.save(file_path, results)
 
-# Main function to load model, apply calculations, and save results
 def main(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print(f"Using device: {device}")
+
+    # Set activation function
+    if args.activation == 'gelu':
+        activation_fn = nn.GELU()
+    elif args.activation == 'relu':
+        activation_fn = nn.ReLU()
+    elif args.activation == 'elu':
+        activation_fn = nn.ELU()
+    else:
+        activation_fn = nn.ReLU()  # Default
 
     # Load the model
-    model = VAE(args.input_dim, args.hidden_dim, args.latent_dim, args.input_dim).to(device)
-    state_dict = torch.load(f'./model/{args.model}', map_location=device)
-    model.load_state_dict(state_dict)
+    model = VAE(args.input_dim, args.hidden_dim, args.latent_dim, args.input_dim, activation_fn).to(device)
+    
+    # Load checkpoint
+    checkpoint = torch.load(f'./model/{args.model}', map_location=device)
+    
+    # Handle both old and new save formats
+    if isinstance(checkpoint, dict):
+        if 'model_state_dict' in checkpoint:
+            model.load_state_dict(checkpoint['model_state_dict'])
+            print("Loaded model with saved hyperparameters")
+            if 'hyperparameters' in checkpoint:
+                print(f"Model hyperparameters: {checkpoint['hyperparameters']}")
+        else:
+            model.load_state_dict(checkpoint)
+    else:
+        model.load_state_dict(checkpoint)
 
     # Load data
-    x_eval = torch.FloatTensor(np.load(f'./data/interpolation/{args.input}')).to(device)
+    x_eval_np = np.load(f'./data/interpolation/{args.input}')
+    
+    # Ensure data is in [0, 1] range for sigmoid output
+    if x_eval_np.max() > 1.0:
+        print("Normalizing input data to [0, 1] range")
+        x_eval_np = (x_eval_np > 0).astype(np.float32)
+    
+    x_eval = torch.FloatTensor(x_eval_np).to(device)
 
     # Load global genus indices
     global_genus_idx = np.load("./data/interaction/genus_list.npy", allow_pickle=True).item()
     idxs = np.where(np.sum(x_eval.cpu().numpy(), axis=0) > 0)[0]
-    print(f"number of genus to scan: {len(idxs)}")
+    print(f"Number of genus to scan: {len(idxs)}")
 
     mutant_values = []
     mutant_background = []
@@ -47,7 +78,7 @@ def main(args):
     num_samples = x_eval.size(0)
 
     # Iterate over the selected indices with a progress bar
-    for k in tqdm(range(len(idxs)), desc="Processing genus", ncols=100):  # tqdm progress bar added here
+    for k in tqdm(range(len(idxs)), desc="Processing genus", ncols=100):
         idx = idxs[k]
         genus_name = [key for key, value in global_genus_idx.items() if value == idx]
         mutant_genus.append(genus_name)
@@ -89,8 +120,11 @@ def main(args):
     np.savetxt('./data/interaction/interaction_background.txt', np.array(mutant_background))
     np.savetxt('./data/interaction/interaction_addition.txt', np.array(mutant_values))
     np.savetxt('./data/interaction/interaction_genus.txt', np.array(mutant_genus), fmt="%s")
+    np.savetxt('./data/interaction/interaction_num.txt', np.array(mutant_num))
 
     print("Results saved to ./data/interaction/")
+    print(f"Processed {len(idxs)} genera")
+    print(f"Average number of affected samples per genus: {np.mean(mutant_num):.1f}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Apply VAE model to input data and perform mutant analysis")
@@ -101,13 +135,20 @@ if __name__ == "__main__":
     parser.add_argument("-i", "--input", type=str, default="interpolation_input.npy",
                         help="Name of the input file (default: interpolation_input.npy)")
 
-    # Hyperparameter arguments
-    parser.add_argument("-id", "--input_dim", type=int, default=13125, help="Input dimension of the model")
-    parser.add_argument("-hd", "--hidden_dim", type=int, default=256, help="Hidden dimension of the model")
-    parser.add_argument("-ld", "--latent_dim", type=int, default=32, help="Latent dimension of the model")
+    # Hyperparameter arguments - updated defaults
+    parser.add_argument("-id", "--input_dim", type=int, default=11555, 
+                        help="Input dimension of the model")
+    parser.add_argument("-hd", "--hidden_dim", type=int, default=2048, 
+                        help="Hidden dimension of the model (default: 2048)")
+    parser.add_argument("-ld", "--latent_dim", type=int, default=32, 
+                        help="Latent dimension of the model (default: 32)")
+    parser.add_argument("-a", "--activation", type=str, default='relu',
+                        choices=['relu', 'gelu', 'elu'],
+                        help="Activation function (default: relu)")
     
     # Batch size argument
-    parser.add_argument("-b", "--batch_size", type=int, default=2048, help="Batch size for processing the input data")
+    parser.add_argument("-b", "--batch_size", type=int, default=2048, 
+                        help="Batch size for processing the input data")
     
     args = parser.parse_args()
 
