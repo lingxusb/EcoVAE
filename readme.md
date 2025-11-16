@@ -257,7 +257,7 @@ The optional argument is similar to the ```interpolation.py``` file. The model o
 - ```interaction_background.txt```, size is (n, n), row *i* stores the grid number (distribution range) for all the genera.
 - ```interaction_addition.txt```, size is (n, n), row *i* stores the predicted grid number (distribution range) for all the genera after addition of genus *i*.
 
-We also provide a [jupyter notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/interaction.ipynb) for analyzing the model output.
+We provide a [jupyter notebook](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/interaction.ipynb) for analyzing the model output and [another one](https://github.com/lingxusb/EcoVAE/blob/main/notebooks/mammal_interaction.ipynb) to reproduce Figure 5 d-f.
 
 ## Model details
 | Taxa      | plant | plant |butterfly |butterfly |mammal |mammal  |
